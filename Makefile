@@ -6,7 +6,7 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/19 14:22:07 by hgeissle          #+#    #+#              #
-#    Updated: 2023/02/18 13:33:31 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/02/20 14:06:51 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJS_LIBFT = $(SRC_LIBFT:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(OBJS_LIBFT)
-	gcc $(FLAGS) $(OBJS) $(OBJS_LIBFT) $(INCLUDE) -o $(NAME)
+	cc $(FLAGS) $(OBJS) $(OBJS_LIBFT) $(INCLUDE) -o $(NAME)
 
 bonus: all
 

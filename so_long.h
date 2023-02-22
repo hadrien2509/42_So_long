@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:53:33 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/22 10:26:29 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/22 13:30:41 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	ft_create_img(t_rendering *ren, t_mapcoord *mapc, char **ar);
 void	ft_create_player_img(t_rendering *ren, t_mapcoord *mapc, char **ar);
 void	ft_free(t_rendering *ren, t_mapcoord *mapc, char **map_array);
 int		ft_check_file_format(char *arg);
-int		ft_check_file(char *arg, t_mapcoord *mapc, t_map *map);
+int		ft_check_file(char *arg, t_mapcoord *mapc, t_map *map, int ac);
 int		ft_exit(t_vars *vars);
 
 #endif

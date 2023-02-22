@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:33:01 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/21 16:29:05 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/22 13:31:15 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,15 @@ int	ft_check_file_format(char *arg)
 	return (0);
 }
 
-int	ft_check_file(char *arg, t_mapcoord *mapc, t_map *map)
+int	ft_check_file(char *arg, t_mapcoord *mapc, t_map *map, int ac)
 {
 	int	fd;
 
+	if (ac != 2)
+	{
+		ft_printf(".ber file argument needed\n");
+		return (-1);
+	}
 	if (ft_check_file_format(arg) == -1)
 		return (-1);
 	fd = open(arg, O_RDONLY);
@@ -84,9 +89,7 @@ int	main(int ac, char **av)
 	t_mapcoord	mapc;
 
 	map = 0;
-	if (ac != 2)
-		return (0);
-	fd = ft_check_file(av[1], &mapc, map);
+	fd = ft_check_file(av[1], &mapc, map, ac);
 	if (fd == -1)
 		return (-1);
 	if (ft_file_to_lst(fd, &mapc, &map) == -1)

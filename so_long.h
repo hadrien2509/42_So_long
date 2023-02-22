@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:53:33 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/20 19:17:52 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/22 10:26:29 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,6 @@ typedef struct s_rendering {
 	void	*img1;
 	void	*imgc;
 	void	*imgtb;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	int		img_width;
-	int		img_height;
-	char	*path0;
-	char	*path1;
-	char	*path_p;
-	char	*path_c;
-	char	*path_e;
 	void	*mlx;
 	void	*win;
 }				t_rendering;

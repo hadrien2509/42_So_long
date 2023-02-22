@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:45:35 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/20 13:29:52 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:31:11 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_fixed_tiles(char **map_array, t_mapcoord *mapc, t_rendering *ren)
 	int		x;
 	int		y;
 
-	ft_create_img(ren);
+	ft_create_img(ren, mapc, map_array);
 	mapc->y = 0;
 	while (mapc->y < mapc->linem)
 	{
@@ -67,9 +67,11 @@ void	ft_move_tiles(t_mapcoord *mapc, t_rendering ren, t_vars *v, char **ar)
 	v->cols = v->mapc.colm;
 	v->moves = 0;
 	v->end = 0;
-	ft_create_player_img(&v->ren);
-	ft_text_box(v, "Collect all the bags !");
-	mlx_key_hook(ren.win, key_hook, v);
+	ft_create_player_img(&v->ren, &v->mapc, v->map_array);
+	ft_text_box(v, "Collect all the bags !", 0);
+	mlx_hook(v->ren.win, 17, 0, ft_exit, v);
+	mlx_key_hook(v->ren.win, key_hook, v);
+	mlx_loop(v->ren.mlx);
 }
 
 void	show_map(char **map_array, t_mapcoord mapc)
@@ -85,5 +87,4 @@ void	show_map(char **map_array, t_mapcoord mapc)
 	ren.win = mlx_new_window(ren.mlx, width, height, "So long!");
 	ft_fixed_tiles(map_array, &mapc, &ren);
 	ft_move_tiles(&mapc, ren, &vars, map_array);
-	mlx_loop(ren.mlx);
 }

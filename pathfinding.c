@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:33:40 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/18 21:51:56 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:20:02 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	ft_free_array(t_mapcoord *mapc, char **map_array_dup)
 {
 	int		i;
 
+	if (!map_array_dup)
+		return ;
 	i = 0;
 	while (i < mapc->linem)
 	{
@@ -85,6 +87,7 @@ int	ft_pathfinding_utils(t_mapcoord *mapc, char **map_array)
 	mapc->coin_collect = 0;
 	if (ft_pathfinding(map_arr_dup, mapc->player_y, mapc->player_x, mapc) == 0)
 	{
+		ft_free_array(mapc, map_arr_dup);
 		ft_printf("No valid path in the map.\n");
 		return (-1);
 	}

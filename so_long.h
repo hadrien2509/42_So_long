@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:53:33 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/20 13:46:45 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:17:52 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int		ft_strlen(char *s);
 t_map	*ft_lstnew(int fd);
 t_map	*ft_lstlast(t_map *lst);
 void	ft_lstadd_back(t_map ***lst, t_map *new);
+void	ft_lstclear(t_map **lst);
 int		ft_check_map_size(t_mapcoord *mapc);
 int		ft_check_colm(t_mapcoord *mapc, t_map *new);
 int		ft_file_to_lst(int fd, t_mapcoord *mapc, t_map **map);
@@ -100,14 +101,15 @@ void	ft_put_objects(t_mapcoord *mapc, t_rendering *ren, char copy);
 void	ft_fixed_tiles(char **map_array, t_mapcoord *mapc, t_rendering *ren);
 void	ft_move_tiles(t_mapcoord *mapc, t_rendering ren, t_vars *v, char **ar);
 void	show_map(char **map_array, t_mapcoord mapc);
-void	ft_text_box(t_vars *vars, char *str);
+void	ft_text_box(t_vars *vars, char *str, int malloc);
 char	*ft_itoa(int nb);
 void	ft_count_moves(t_vars *vars);
 void	ft_free_img(t_rendering *ren);
-void	ft_create_img(t_rendering *ren);
-void	ft_create_player_img(t_rendering *ren);
+void	ft_create_img(t_rendering *ren, t_mapcoord *mapc, char **ar);
+void	ft_create_player_img(t_rendering *ren, t_mapcoord *mapc, char **ar);
 void	ft_free(t_rendering *ren, t_mapcoord *mapc, char **map_array);
 int		ft_check_file_format(char *arg);
-int		ft_check_file(char *arg);
+int		ft_check_file(char *arg, t_mapcoord *mapc, t_map *map);
+int		ft_exit(t_vars *vars);
 
 #endif

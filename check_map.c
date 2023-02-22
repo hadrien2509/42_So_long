@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:36:28 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/16 18:30:56 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:10:45 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_check_map_items(char **map_array, int x, int y, t_mapcoord *mapc)
 	else if (map_array[y][x] == 'E')
 	{
 		if (exit_check == 1 || exit_check == 5)
-			exit_check = 5;
+			exit_check = 6;
 		else
 			exit_check = 1;
 	}
@@ -74,15 +74,15 @@ void	ft_error_type(int error_type)
 {
 	if (error_type == 2 || error_type == 4)
 		ft_printf("The map must have an exit.\n");
-	if (error_type == 1 || error_type == 5)
+	if (error_type == 1 || error_type == 6)
 		ft_printf("The map must have a player starting positon.\n");
 	if (error_type == 0)
 		ft_printf("The map must have a player starting positon and an exit.\n");
-	if (error_type == 7)
+	if (error_type == 6 || error_type == 8)
 		ft_printf("The map must have only 1 exit.\n");
-	if (error_type == 6)
+	if (error_type == 5 || error_type == 4)
 		ft_printf("The map must have only 1 player starting position.\n");
-	if (error_type == 9)
+	if (error_type == 10)
 		ft_printf("The map must have only 1 player position and 1 exit.\n");
 	if (error_type == -3)
 		ft_printf("Invalid characters in the map.\n");

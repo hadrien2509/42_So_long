@@ -6,11 +6,11 @@
 #    By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/19 14:22:07 by hgeissle          #+#    #+#              #
-#    Updated: 2023/02/20 14:06:51 by hgeissle         ###   ########.fr        #
+#    Updated: 2023/02/21 16:32:46 by hgeissle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long.out
+NAME = so_long
 
 SRC = parsing.c check_map.c pathfinding.c images.c show_map.c game.c text_box_bonus.c main.c
 

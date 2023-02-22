@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:49:49 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/20 13:15:53 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:47:28 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	ft_file_to_lst(int fd, t_mapcoord *mapc, t_map **map)
 			return (-1);
 		}
 	}
+	ft_lstadd_back(&map, new);
 	if (ft_check_map_size(mapc) == -1)
 		return (-1);
 	return (0);
@@ -96,5 +97,7 @@ char	**ft_map_array(t_map *map, int linem)
 		map = trace;
 		i++;
 	}
+	if (map)
+		free(map);
 	return (map_array);
 }

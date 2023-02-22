@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:51:40 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/18 13:41:08 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:48:04 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_map	*ft_lstnew(int fd)
 	new = malloc(sizeof(t_map));
 	if (!new)
 	{
-		ft_printf("An error occured");
+		ft_printf("Memory error\n");
 		return (NULL);
 	}
 	new->line = get_next_line(fd);
@@ -49,6 +49,22 @@ t_map	*ft_lstlast(t_map *lst)
 		}
 	}
 	return (lst);
+}
+
+void	ft_lstclear(t_map **lst)
+{
+	t_map	*trace;
+
+	if (lst)
+	{	
+		while (*lst)
+		{
+			trace = (*lst)->next;
+			free((*lst)->line);
+			free(*lst);
+			(*lst) = trace;
+		}
+	}
 }
 
 void	ft_lstadd_back(t_map ***lst, t_map *new)

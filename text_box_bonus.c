@@ -6,13 +6,13 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:41:53 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/18 17:26:05 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:46:26 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_text_box(t_vars *vars, char *str)
+void	ft_text_box(t_vars *vars, char *str, int malloc)
 {
 	int		x;
 	void	*mlx;
@@ -22,11 +22,11 @@ void	ft_text_box(t_vars *vars, char *str)
 
 	x = vars->mapc.colm;
 	mlx = vars->ren.mlx;
-	path = "./textures/xpm/text_box.xpm";
-	vars->ren.imgtb = mlx_xpm_file_to_image(mlx, path, &a, &a);
 	img = vars->ren.imgtb;
 	mlx_put_image_to_window(mlx, vars->ren.win, img, (x - 2) * 128, 5);
 	mlx_string_put(mlx, vars->ren.win, (x - 1.87) * 128, 15, 0x000000, str);
+	if (str && malloc)
+		free(str);
 }
 
 static int	ft_nbrlen(int nb)
@@ -77,5 +77,10 @@ void	ft_count_moves(t_vars *vars)
 
 	vars->moves++;
 	itoa = ft_itoa(vars->moves);
-	ft_text_box(vars, itoa);
+	if (!itoa)
+	{
+		ft_printf("Memory error\n");
+		ft_exit(vars);
+	}
+	ft_text_box(vars, itoa, 1);
 }

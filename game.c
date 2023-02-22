@@ -6,7 +6,7 @@
 /*   By: hgeissle <hgeissle@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:57:26 by hgeissle          #+#    #+#             */
-/*   Updated: 2023/02/18 21:36:40 by hgeissle         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:45:19 by hgeissle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ int	ft_exit_animation(t_vars *v)
 	y = (v->mapc.player_y + 0.4) * 160;
 	if (v->mapc.player_x >= 0)
 		mlx_put_image_to_window(v->ren.mlx, v->ren.win, v->ren.imge, x, y);
-	if (v->mapc.player_x == -20)
+	if (v->mapc.player_x == -4)
 	{
+		usleep(300000);
 		ft_printf("You finished the game in %d moves.\n", v->moves);
 		ft_free(&v->ren, &v->mapc, v->map_array);
 	}
@@ -97,9 +98,9 @@ void	ft_interactions(t_vars *v)
 			ft_put_exit(v, v->mapc.player_x * 128, v->mapc.player_y * 160);
 		}
 		else if (v->mapc.nbr_of_coins == 1)
-			ft_text_box(v, "One bag remains");
+			ft_text_box(v, "One bag remains", 0);
 		else
-			ft_text_box(v, "Bags still remaining");
+			ft_text_box(v, "Bags still remaining", 0);
 	}
 }
 
